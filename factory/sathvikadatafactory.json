@@ -1,0 +1,9 @@
+{
+	"name": "sathvikadatafactory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "580445e3-6993-464a-a10a-07c0d36fa2bb",
+		"tenantId": "3fbe876f-cfea-40b2-a741-4999dbeb1f5b"
+	}
+}
