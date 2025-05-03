@@ -12,7 +12,15 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "DelimitedText4",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -29,7 +37,27 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> source1",
 				"source1 derive({injest date} = toUTC(currentTimestamp()),",
-				"          column2 = ERROR_FUNCTION('')) ~> derivedColumn1"
+				"          column2 = ERROR_FUNCTION('')) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     input(",
+				"          Series_reference as string,",
+				"          Period as string,",
+				"          Data_value as string,",
+				"          Suppressed as string,",
+				"          STATUS as string,",
+				"          UNITS as string,",
+				"          Magnitude as string,",
+				"          Subject as string,",
+				"          Group as string,",
+				"          Series_title_1 as string,",
+				"          Series_title_2 as string,",
+				"          Series_title_3 as string,",
+				"          Series_title_4 as string,",
+				"          Series_title_5 as string",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
